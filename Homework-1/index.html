@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>JS Adv (Homework)</title>
+	<title>JS Adv (Homework 1)</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 	<style>
 		body {
@@ -18,42 +18,32 @@
 		.btn {
 			margin-bottom: 8px;
 		}
+		.list-group-item.active {
+			z-index: 2;
+			color: #fff;
+			background-color: #5a6268;
+			border-color: #5a6268;
+		}
 	</style>
 </head>
 <body>
-
-	<div class="card bg-dark text-white" style="width: 18rem;">
-		<ul class="list-group list-group-flush ">
-			<li class="list-group-item bg-dark text-white">Item 1</li>
-			<li class="list-group-item bg-dark text-white">Item 2</li>
+	<div class="card bg-dark text-white" style="width: 20rem;">
+		<ul class="list-group list-group-flush">
+			<li class="list-group-item bg-dark">Item 1</li>
+			<li class="list-group-item bg-dark">Item 2</li>
+			<li class="list-group-item bg-dark">Item 3</li>
+			<li class="list-group-item bg-dark">Item 4</li>
 		</ul>
 		<div class="card-body">
-			<button type="button" class="btn btn-primary">Add</button>
-			<button type="button" class="btn btn-secondary">Remove Item</button>
-			<button type="button" class="btn btn-success">Success</button>
-			<button type="button" class="btn btn-danger">Danger</button>
-			<button type="button" class="btn btn-warning ">Warning</button>
-			<button type="button" class="btn btn-light">Light</button>
+			<button type="button" class="btn btn-primary" onclick="firstElement()">Выбрать первый элемент</button>
+			<button type="button" class="btn btn-secondary" onclick="lastElement()">Выбрать последний элемент</button>
+			<button type="button" class="btn btn-success" onclick="nextElement()">Выбрать следующий элемент</button>
+			<button type="button" class="btn btn-danger" onclick="prevElement()">Выбрать предыдущий элемент</button>
+			<button type="button" class="btn btn-warning" onclick="addElement()">Добавить элемент</button>
+			<button type="button" class="btn btn-info" onclick="removeElement()">Удалить элемент</button>
+			<button type="button" class="btn btn-light" onclick="addFirstElement()">Добавить в начало</button>
 		</div>
 	</div>
-
-	<!-- <ul class="list-group">
-		<li class="list-group-item">Cras justo odio</li>
-		<li class="list-group-item">Dapibus ac facilisis in</li>
-		<li class="list-group-item">Morbi leo risus</li>
-		<li class="list-group-item">Porta ac consectetur ac</li>
-		<li class="list-group-item">Vestibulum at eros</li>
-	</ul> -->
-	
-	<!-- <button type="button" class="btn btn-primary">Primary</button>
-	<button type="button" class="btn btn-secondary">Secondary</button>
-	<button type="button" class="btn btn-success">Success</button>
-	<button type="button" class="btn btn-danger">Danger</button>
-	<button type="button" class="btn btn-warning">Warning</button>
-	<button type="button" class="btn btn-info">Info</button>
-	<button type="button" class="btn btn-light">Light</button>
-	<button type="button" class="btn btn-dark">Dark</button> -->
-
 	<script src="main.js"></script>
 </body>
 </html>
