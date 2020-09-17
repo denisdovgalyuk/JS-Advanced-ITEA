@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JS Adv (Homework 1)</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<style>
+		body {
+			display: flex;
+			justify-content: center;
+			margin: 60px auto;
+		}
+		.card-body {
+			display: flex;
+			flex-direction: column;
+		}
+		.btn {
+			margin-bottom: 8px;
+		}
+		.list-group-item.active {
+			z-index: 2;
+			color: #fff;
+			background-color: #5a6268;
+			border-color: #5a6268;
+		}
+	</style>
+</head>
+<body>
+	<div class="card bg-dark text-white" style="width: 20rem;">
+		<ul class="list-group list-group-flush">
+			<li class="list-group-item bg-dark">Item 1</li>
+			<li class="list-group-item bg-dark">Item 2</li>
+			<li class="list-group-item bg-dark">Item 3</li>
+			<li class="list-group-item bg-dark">Item 4</li>
+		</ul>
+		<div class="card-body">
+			<button type="button" class="btn btn-primary" onclick="firstElement()">Выбрать первый элемент</button>
+			<button type="button" class="btn btn-secondary" onclick="lastElement()">Выбрать последний элемент</button>
+			<button type="button" class="btn btn-success" onclick="nextElement()">Выбрать следующий элемент</button>
+			<button type="button" class="btn btn-danger" onclick="prevElement()">Выбрать предыдущий элемент</button>
+			<button type="button" class="btn btn-warning" onclick="addElement()">Добавить элемент</button>
+			<button type="button" class="btn btn-info" onclick="removeElement()">Удалить элемент</button>
+			<button type="button" class="btn btn-light" onclick="addFirstElement()">Добавить в начало</button>
+		</div>
+	</div>
+	<script src="main.js"></script>
+</body>
+</html>
