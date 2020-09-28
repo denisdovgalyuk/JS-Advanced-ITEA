@@ -1,0 +1,47 @@
+<!-- 
+    Запросите у пользователя ввести какую-то фразу. 
+    Отобразите каждое отдельное слово в виде списка ul li. 
+    Также отобразите первое слово UPPERCASE, а последние 2 с маленькой. 
+    Найдите все буквы "а" их количество в модальное окно. 
+ -->
+ 
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Homework - 3</title>
+</head>
+<body>
+
+    <ul class="list"></ul>
+    
+    <script>
+        var list = document.querySelector('.list');
+        // Запросите у пользователя ввести какую-то фразу
+        var questionUser = prompt('Введите какую-то фразу на кириллице:').trim();
+
+        // Найдите все буквы "а" их количество в модальное окно. 
+        alert("Количество букв 'а' = " + questionUser.match(/а/gi).length);
+
+        questionUser = questionUser.split(' ');
+
+        // Отобразите каждое отдельное слово в виде списка ul li
+        questionUser.forEach((word, i, arr) => {
+            let list_item = document.createElement('li');
+
+        // Также отобразите первое слово UPPERCASE, а последние 2 с маленькой.
+            if (i == 0) {
+                list_item.textContent = word.toUpperCase();
+            } else if ((arr[arr.length - 1]) || (arr[arr.length - 2])) {
+                list_item.textContent = word.toLowerCase();
+            } else {
+                list_item.textContent = word;
+            }
+
+            list.appendChild(list_item);  
+        });
+        
+    </script>
+
+</body>
+</html>
