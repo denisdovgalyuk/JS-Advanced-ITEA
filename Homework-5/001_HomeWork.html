@@ -1,0 +1,56 @@
+<!--
+Создайте ссылку и див с текстом внутри, который изначально при загрузке страницы будет скрыт.
+При клике на ссылку див появляется, если повторно нажать ссылку див и текст должны пропасть.
+Также создайте кнопку, которая будет отменять выполнение обработчика клика по ссылке.
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+	 <meta charset="UTF-8">
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 <title>Homework - 5</title>
+	 <style>
+		 .wrapp {
+			 padding-top: 10px
+		 }
+		 .text-block {
+			 display: none;
+		 }
+		 .text-block.visable {
+			 display: block;
+		 }
+	 </style>
+ </head>
+ <body>
+	 <button>Delete Event Listener</button>
+
+	 <!-- Создайте ссылку и див с текстом внутри, который изначально при загрузке страницы будет скрыт. -->
+	 <div class="wrapp">
+		<a id="link" href="https://itea.ua/courses-itea/javascript/javascript-advanced/" target="_blank">Toggle TextBlock</a>
+		<div class="text-block">Text inside the div</div>
+	 </div>
+
+		<script>
+			var link = document.getElementById('link');
+			var text_block = document.getElementsByClassName('text-block')[0];
+			var btn = document.getElementsByTagName('button')[0];
+
+			// При клике на ссылку див появляется, если повторно нажать ссылку див и текст должны пропасть.
+			link.addEventListener('click', showTextBlock);
+
+			// Также создайте кнопку, которая будет отменять выполнение обработчика клика по ссылке.
+			btn.addEventListener('click', removeListener);
+
+			function showTextBlock(e) {
+				e.preventDefault();
+				text_block.classList.toggle('visable');
+			}
+
+			function removeListener() {
+				link.removeEventListener('click', showTextBlock);
+			}
+
+		</script>
+ </body>
+ </html>
