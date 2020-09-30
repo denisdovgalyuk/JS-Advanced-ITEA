@@ -11,7 +11,27 @@
  	<title>Homework - 4</title>
  </head>
  <body>
- 	<script type="text/javascript">
+	 <div id="index">В строке нет индекса из 5 чисел</div>
+	 <div id="ip">В строке нет ip-адресса</div>
+	 <div id="price">В строке нет цен в долларах</div>
+	 <div id="date">В строке нет корректного формата даты в виде - 30/12/2016</div>
+
+	 <script type="text/javascript">
+		var question = prompt('Введите какой-то текст:');
+		
+		// Регулярные выражения, которое выбирает - индекс - 55535 - 5 numbers 
+		var indexPatt = /\d{5}/gi;
+		// Регулярные выражения, которое выбирает - дата в виде - 30/12/2016 - день, месяц, год
+		var datePatt = /\d{1,2}\/\d{1,2}\/\d{4}/gi;
+		// Регулярные выражения, которое выбирает - цены в долларах - $0.84, $2.84, $4
+		var carrencyPatt = /(\$[0-9,]+(\.[0-9]{2})?)/gi;
+		// Регулярные выражения, которое выбирает - ip адресс, пример 255.255.255.255
+		var ipAdress = /\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b/gi;
+
+		document.getElementById('index').innerHTML = (!!question.match(indexPatt)) ? 'index - ' + question.match(indexPatt).join(', ') : document.getElementById('index').textContent;
+		document.getElementById('ip').innerHTML = (!!question.match(ipAdress)) ? 'ip - ' + question.match(ipAdress).join(', ') : document.getElementById('ip').textContent;
+		document.getElementById('price').innerHTML = (!!question.match(carrencyPatt)) ? 'price - ' + question.match(carrencyPatt).join(', ') : document.getElementById('price').textContent;
+		document.getElementById('date').innerHTML = (!!question.match(datePatt)) ? 'date - ' + question.match(datePatt).join(', ') : document.getElementById('date').textContent;
  	</script>
  </body>
  </html>

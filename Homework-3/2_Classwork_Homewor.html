@@ -18,10 +18,12 @@
     <script>
         var list = document.querySelector('.list');
         // Запросите у пользователя ввести какую-то фразу
-        var questionUser = prompt('Введите какую-то фразу на кириллице:').trim();
+        var questionUser = prompt('Введите какую-то фразу:').trim();
 
-        // Найдите все буквы "а" их количество в модальное окно. 
-        alert("Количество букв 'а' = " + questionUser.match(/а/gi).length);
+        // Найдите все буквы "а" их количество в модальное окно.
+        if (questionUser.match(/[aа]/gi)) {
+            alert("Количество букв 'а' = " + questionUser.match(/[aа]/gi).length);
+        }
 
         questionUser = questionUser.split(' ');
 
