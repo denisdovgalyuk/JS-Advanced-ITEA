@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Homework - 5</title>
+    <style>
+        div {
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Создайте 5 блоков с текстом. Добавьте в каждый из блоков кнопку для его удаления.
+    Используйте только один обработчик. -->
+
+
+    <!-- Создайте 5 блоков с текстом. Добавьте в каждый из блоков кнопку для его удаления. -->
+    <div>
+        <button>Удалить текст в 1 блоке</button>    
+        1 блок с текстом
+    </div>
+    <div>
+        <button>Удалить текст в 2 блоке</button>    
+        2 блок с текстом
+    </div>
+    <div>
+        <button>Удалить текст в 3 блоке</button>    
+        3 блок с текстом
+    </div>
+    <div>
+        <button>Удалить текст в 4 блоке</button>    
+        4 блок с текстом
+    </div>
+    <div>
+        <button>Удалить текст в 5 блоке</button>    
+        5 блок с текстом
+    </div>
+
+    <script>
+        let btn = document.querySelectorAll('button');
+
+        // Используйте только один обработчик.
+        btn.forEach(btn => btn.addEventListener('click', removeText));
+
+        function removeText() {
+            this.nextSibling.textContent = '';
+        }
+    </script>
+
+</body>
+</html>
