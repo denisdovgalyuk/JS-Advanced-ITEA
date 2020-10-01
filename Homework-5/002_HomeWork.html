@@ -43,7 +43,7 @@
         btn.forEach(btn => btn.addEventListener('click', removeText));
 
         function removeText() {
-            this.nextSibling.textContent = '';
+            this.parentElement.remove();
         }
     </script>
 
