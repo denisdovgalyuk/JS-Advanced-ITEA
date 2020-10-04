@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Homework-6 (Animate)</title>
+
+	<style>
+		#animateEl {
+			width: 150px;
+			height: 75px;
+			background-color: indigo;
+			position: relative;
+			top: 0;
+			left: 0;
+		}
+		button {
+			margin-top: 10px;
+		}
+	</style>
+</head>
+<body>
+	<!-- Cоздайте div, при клике на него, div начинает двигаться вправо, при клике на кнопку - останавливается,
+	при попадании div к краю окна, он переходит к началу окна. -->
+
+	<div id='animateEl'></div>
+
+	<button>Stop Animate</button>
+
+	<script>
+		const animateEl = document.getElementById('animateEl');
+		const btnStop = document.getElementsByTagName('button')[0];
+		var interaval = 0;
+		var count = animateEl.style.left;
+
+		animateEl.addEventListener('click', animate);
+		btnStop.addEventListener('click', stopAnimate);
+
+		function animate(e) {
+			interaval = setInterval(() => {
+				(document.body.offsetWidth === count) ? count = 0 : animateEl.style.left = `${count++}px`;
+			}, 5);
+		}
+
+		function stopAnimate(e) {
+			clearInterval(interaval);
+		}
+
+	</script>
+</body>
+</html>
