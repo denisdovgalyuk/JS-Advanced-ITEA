@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>HomeWork - 6 (Drag`n Drop)</title>
+</head>
+
+<style>
+	#circle {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 50px;
+		height: 50px;
+		background-color: blueviolet;
+		border-radius: 100%;
+		z-index: 999999;
+	}
+</style>
+<body>
+	<!-- back to top button; drag; -->
+	<div id='circle'></div>
+
+	<script>
+		const circle = document.getElementById('circle');
+
+		circle.addEventListener('mousedown', mouseDown);
+
+		function mouseDown(e) {
+			circle.style.left = `${e.pageX - circle.clientWidth / 2}px`;
+			circle.style.top = `${e.pageY - circle.clientHeight / 2}px`;
+
+			document.addEventListener('mousemove', mouseMove);
+			circle.addEventListener('mouseup', mouseUp);
+
+			function mouseMove(e) {
+				circle.style.left = `${e.pageX - circle.clientWidth / 2}px`;
+				circle.style.top = `${e.pageY - circle.clientHeight / 2}px`;
+			}
+
+			function mouseUp(e) {
+				document.removeEventListener('mousemove', mouseMove);
+			}
+		}
+	</script>
+</body>
+</html>
