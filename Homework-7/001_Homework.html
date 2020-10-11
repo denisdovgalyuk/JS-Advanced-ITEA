@@ -1,0 +1,49 @@
+<!-- Создайте функцию, которая возвращает день недели для даты.
+День нужно возвратить в формате - понедельник имеет номер 1, вторник номер 2, …, воскресенье - номер 7. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework-7</title>
+</head>
+<body>
+    <span>Введите дату в формате (2020/10/11): </span>  <br>
+    <input type="text" name="text" id="getDate" style="margin-top: 10px;">
+    <input type="button" value="Получить день недели">
+
+<script>
+    const getDate = document.getElementById('getDate');
+    const getBtn = document.querySelector('[type="button"]');
+
+    getBtn.addEventListener('click', () => {
+        let date = new Date(getDate.value);
+
+        switch(date.getDay()) {
+            case 0:  
+                alert('Воскресенья')
+                break;
+            case 1:  
+                alert('Понедельник')
+                break;
+            case 2:  
+                alert('Вторник')
+                break;
+            case 3:  
+                alert('Среда')
+                break;
+            case 4:  
+                alert('Четверг')
+                break;
+            case 5:  
+                alert('Пятница')
+                break;
+            case 6:  
+                alert('Суббота')
+                break;
+            default:
+                alert('Введен неправельный формат даты! \nКорректный формат даты: "2020/10/11"');
+        }
+    } );
+</script>
+</body>
+</html>

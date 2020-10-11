@@ -1,0 +1,104 @@
+<!-- Реализуйте последние 2 слайда в презентации с помощью пройденого на уроке материала -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework-7 (Наследование)</title>
+</head>
+<body>
+    <script type="text/javascript">
+    // ES5
+        function Man(who) {
+            this.who = who;
+
+            this.wolk = function () {
+                console.log(this.who + ' идёт')
+            };
+
+            this.eat = function () {
+                console.log(this.who + ' ест')
+            };
+
+            this.drink = function () {
+                console.log(this.who + ' пьет')
+            };
+        };
+
+        function Soldier(who) {
+            this.who = who;
+
+            this.shoot = function () {
+                console.log(this.who + ' стреляет');
+            }
+        }
+
+        function Doctor(who) {
+            this.who = who;
+
+            this.cure = function() {
+                console.log(this.who + ' лечит');
+            }
+        }
+
+        Soldier.prototype = new Man();
+        Doctor.prototype = new Man();
+
+        var soldier = new Soldier('Лейтенант');
+        var doctor = new Doctor('Хирург');
+
+        soldier.shoot();
+        soldier.drink();
+        doctor.eat();
+
+        // ES6
+        // class Man {
+        //     constructor(who) {
+        //         this.who = who;
+        //     }
+
+        //     wolk() {
+        //         console.log(this.who + ' идёт')
+        //     };
+
+        //     eat() {
+        //         console.log(this.who + ' ест')
+        //     };
+
+        //     drink() {
+        //         console.log(this.who + ' пьет')
+        //     };
+        // }
+
+        // class Solidar extends Man {
+        //     constructor(who) {
+        //         super(who);
+        //         this.who = who;
+        //     }
+        //     shoot() {
+        //         console.log(this.who + ' стреляет');
+        //     }
+        // }
+
+        // class Doctor extends Man {
+        //     constructor(who) {
+        //         super(who);
+        //         this.who = who;
+        //     }
+
+        //     cure() {
+        //         console.log(this.who + ' лечит');
+        //     }
+        // }
+
+        // var solider = new Solidar('Лейтенант');
+        // var doctor = new Doctor('Хирург');
+
+
+        // solider.shoot();
+        // solider.drink();
+        // doctor.eat();
+
+
+    </script>
+</body>
+</html>
