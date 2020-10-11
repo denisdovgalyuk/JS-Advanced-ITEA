@@ -1,0 +1,132 @@
+<!-- Реализуйте последние 2 слайда в презентации с помощью пройденого на уроке материала -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework-7 (Полиморфизм)</title>
+    
+</head>
+<body>
+    <script>
+        // ES5
+        function Cure() {
+            this.cure = function() {
+                console.log('Осматривает пациента');
+            }
+        }
+
+        function Doctor(who) {
+            this.who = who;
+
+            this.wolk = function () {
+                console.log(this.who + ' идёт')
+            };
+
+            this.eat = function () {
+                console.log(this.who + 'ест')
+            };
+
+            this.drink = function () {
+                console.log(this.who + ' пьет')
+            };
+        }
+
+        function Dantist() {
+            this.who = 'Дантист';
+            
+            this.cure = function() {
+                console.log('Лечит зубы');
+            }
+        }
+
+        function Surgeon() {
+            this.who = 'Хирург';
+
+            this.cure = function() {
+                console.log('Делает пластические операции');
+            }
+        }
+
+        Doctor.prototype = new Cure();
+        Dantist.prototype = new Doctor();
+        Surgeon.prototype = new Doctor();
+
+        var doctor = new Doctor();
+        var dantist = new Dantist();
+        var surgeon = new Surgeon();
+
+        doctor.cure();
+
+        surgeon.cure();
+        surgeon.drink();
+
+        dantist.cure();
+        dantist.wolk();
+    // ES6
+    // class Cure {
+    //     constructor(who) {
+    //         this.who = who;
+    //     }
+
+    //     cure() {
+    //         console.log('Осматривает пациента');
+    //     }
+    // }
+
+    // class Doctor extends Cure {
+    //     constructor(who) {
+    //         super(who);
+    //         this.who = who;
+    //     }
+
+    //     wolk() {
+    //         console.log(this.who + ' идёт')
+    //     }
+
+    //     eat() {
+    //         console.log(this.who + 'ест')
+    //     }
+
+    //     drink() {
+    //         console.log(this.who + ' пьет')
+    //     }
+    //     cure() {
+    //         super.cure();
+    //     }
+    // }
+
+    // class Dantist extends Doctor {
+    //     constructor(who) {
+    //         super(who);
+    //         this.who = 'Дантист';
+    //     }
+    //     cure() {
+    //         console.log('Лечит зубы');
+    //     }
+    // }
+
+    // class Surgeon extends Doctor {
+    //     constructor(who) {
+    //         super(who);
+    //         this.who = 'Хирург'; 
+    //     }
+    //     cure() {
+    //         console.log('Делает пластические операции');
+    //     }
+    // }
+
+    // var doctor = new Doctor();
+    // var surgeon = new Surgeon();
+    // var dantist = new Dantist();
+
+    // doctor.cure();
+
+    // surgeon.cure();
+    // surgeon.drink();
+
+    // dantist.cure();
+    // dantist.wolk();
+
+    </script>
+</body>
+</html>
