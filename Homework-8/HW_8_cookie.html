@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Homework-8 (cookie)</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            display: none;
+            justify-content: center;
+            flex-direction: column;
+            width: 500px;
+            text-align: center;
+            color: red;
+        }
+        .container.show {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Создайте страницу которая запрашивает имя пользователя, если пользователь вводит "Admin" либо "admin" он попадает на страницу,
+    которая оповещает его о том что " Пользоваетль Admin(не статическая строка, а данные что ввел пользователь) вошел в систему"
+    а рядом разместите кнопку "Выход" которая вернет пользователя к модальному окну ввода логина. Реализуйте код как для куки так и для localstorage. -->
+
+    <div class="container">
+        <h4 id="userStatus"></h4>
+        <button id="exit" type="button" class="btn btn-primary" style="width: 200px; margin: 0 auto;">Выйти</button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Введите имя пользователя</h5>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Login">
+                </div>
+                <div class="modal-footer">
+                    <button id="entry" type="button" class="btn btn-primary">Войти</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let inputLogin = document.querySelector('[type="text"]');
+        let btnEntry = document.querySelector('#entry');
+        let btnExit = document.querySelector('#exit');
+        let userStatus = document.querySelector('#userStatus');
+
+        const helper = {
+            getCookie: function (cookieName) {
+                var allcookies = document.cookie; 
+                var pos = allcookies.indexOf(cookieName + "="); 
+
+                if (pos != -1) {
+                    var start = pos + cookieName.length + 1;
+                    var end = allcookies.indexOf(";", start); 
+
+                    if (end == -1) {
+                        end = allcookies.length;
+                    } 
+
+                    var value = allcookies.substring(start, end);
+                    return decodeURIComponent(value);
+                }
+            },
+            setCookie: function (cookieName, cookieValue) {
+                document.cookie = `${cookieName}=` + cookieValue;
+            },
+            removeCookie: function (cookieName) {
+                document.cookie = `${cookieName}=; max-age=0`;
+            }
+        }
+
+        if (!!helper.getCookie('userName')) {
+            authSuccess(helper.getCookie('userName'));
+        } else {
+            $('#exampleModal').modal({backdrop: 'static', keyboard: false, show: true });
+        }
+
+        btnEntry.addEventListener('click', authUser);
+        btnExit.addEventListener('click', exit);
+        inputLogin.addEventListener('change', styleValid);
+
+        function authUser() {
+            if (inputLogin.value.toLowerCase() === 'admin') {
+                helper.setCookie('userName', inputLogin.value)
+                authSuccess(inputLogin.value);
+                $("#exampleModal").modal("hide");
+            } 
+        }
+
+        function authSuccess(userName) {
+            document.querySelector('.container').classList.add('show');
+            userStatus.textContent = `Пользователь ${userName} вошел в систему`
+        }
+
+        function exit() {
+            helper.removeCookie('userName')
+            inputLogin.value = '';
+            $("#exampleModal").modal("show");
+            document.querySelector('.container').classList.remove('show');
+        }
+
+        function styleValid() {
+            if (inputLogin.value.toLowerCase() !== 'admin') {
+                inputLogin.style.border = '1px solid red';
+            } else {
+                inputLogin.style.border = '1px solid #ced4da';
+            }
+        }
+        
+    </script>
+</body>
+
+</html>
