@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Star Wars - Project</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="logo">
+			<img class="logo-img"
+				src="http://vignette1.wikia.nocookie.net/disney/images/8/8b/Starwars-logo.png/revision/latest?cb=20141129122237"
+				alt="Star Wars">
+		</div>
+
+		<div class="block-container">
+			<div id="prev"></div>
+			<div class="block-wrapper"></div>
+			<div id="next"></div>
+		</div>
+
+	</div>
+
+	<div class="modal">
+		<svg class="modal__cross hide-modal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+			<path
+				d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z" />
+		</svg>
+
+		<table class="table_dark">
+			<tr>
+				<th id="name" colspan="2">Name</th>
+				</tr>
+			<tr>
+				<td>Birth Year</td>
+				<td id="birth-year"></td>
+				</tr>
+			<tr>
+				<td>Gender</td>
+				<td id="gender"></td>
+				</tr>
+			<tr>
+				<td>Films</td>
+				<td id="films"></td>
+				</tr>
+			<tr>
+				<td>Homeworld</td>
+				<td id="homeworld"></td>
+			</tr>
+			<tr>
+				<td>Species</td>
+				<td id="species"></td>
+			</tr>
+			</table>
+	</div>
+
+	<div class="overlay"></div>
+
+<script src="js/index.js"></script>
+
+<!-- Bg libs -->
+<script src="/Project/libs/three.min.js"></script>
+<script src="/Project/libs/bg-options.js"></script>
+</body>
+
+</html>
